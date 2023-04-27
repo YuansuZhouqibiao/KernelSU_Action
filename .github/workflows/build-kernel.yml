@@ -43,12 +43,12 @@ jobs:
         echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "DEVICE=$(echo ${{ env.KERNEL_DEFCONFIG }} | sed 's!vendor/!!;s/_defconfig//;s/_user//;s/-perf//')" >> $GITHUB_ENV
         sudo apt-get update
-        sudo apt-get install -y --no-install-recommends gcc g++ gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} gcc-${{ env.GCC_VERSION }}-arm-linux-gnueabi gcc-${{ env.GCC_VERSION }}-aarch64-linux-gnu git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python2 python3 
+        sudo apt-get install -y --no-install-recommends gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} gcc-${{ env.GCC_VERSION }}-arm-linux-gnueabi gcc-${{ env.GCC_VERSION }}-aarch64-linux-gnu git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python2 python3 
         mkdir -p $GITHUB_WORKSPACE/kernel_workspace
-        ln -sf /usr/bin/gcc-${{ env.GCC_VERSION }} /usr/bin/gcc
-        ln -sf /usr/bin/g++-${{ env.GCC_VERSION }} /usr/bin/g++
-        ln -sf /usr/bin/aarch64-linux-gnu-gcc-${{ env.GCC_VERSION }} /usr/bin/aarch64-linux-gnu-gcc
-        ln -sf /usr/bin/arm-linux-gnueabi-gcc-${{ env.GCC_VERSION }} /usr/bin/arm-linux-gnueabi-gcc
+        sudo ln -sf /usr/bin/gcc-${{ env.GCC_VERSION }} /usr/bin/gcc
+        sudo ln -sf /usr/bin/g++-${{ env.GCC_VERSION }} /usr/bin/g++
+        sudo ln -sf /usr/bin/aarch64-linux-gnu-gcc-${{ env.GCC_VERSION }} /usr/bin/aarch64-linux-gnu-gcc
+        sudo ln -sf /usr/bin/arm-linux-gnueabi-gcc-${{ env.GCC_VERSION }} /usr/bin/arm-linux-gnueabi-gcc
     - name: Download Clang-aosp and Gcc-aosp
       if: env.USE_CUSTOM_CLANG == 'false'
       run: |
