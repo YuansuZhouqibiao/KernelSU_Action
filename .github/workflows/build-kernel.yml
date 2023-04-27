@@ -57,7 +57,7 @@ jobs:
         tar -C gcc-aosp/ -zxvf android-12.1.0_r27.tar.gz
         mkdir gcc-aosp-32
         cd gcc-aosp-32
-        wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+/refs/tags/android-12.1.0_r27.tar.gz
+        wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
         tar -zxvf android-12.1.0_r27.tar.gz
 
     - name: Download Custom-Clang
